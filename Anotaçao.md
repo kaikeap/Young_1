@@ -41,6 +41,10 @@ elif a < b:
 else:
     print('saude')
 ```
+# Aula 3
+-while: significa enquanto
+
+-n/: pode ser usado para pular uma linha
 
 ## EXERCICIOS
 
