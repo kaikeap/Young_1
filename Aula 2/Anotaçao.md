@@ -44,7 +44,16 @@ else:
 # Aula 3
 -while: significa enquanto
 
--n/: pode ser usado para pular uma linha
+-\n: pode ser usado para pular uma linha
+
+# Aula 4
+
+## comandos de repetiçao python
+
+-while true: o contrario do 'while' o 'while true' repete o codigo ate que seja verdadeiro enquanto for falso ele continua.
+
+-for
+
 
 ## EXERCICIOS
 
