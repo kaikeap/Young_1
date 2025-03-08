@@ -10,4 +10,3 @@ while user != bot:
     elif user > bot:
         print('esse numero é maior que bot')
     user = int(input('tente adivinhar um numero de 1 a 100\n'))
-

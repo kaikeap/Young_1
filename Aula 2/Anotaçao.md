@@ -54,6 +54,8 @@ else:
 
 -for
 
+-float: utilizado para numeros com virgula.
+
 
 ## EXERCICIOS
 
