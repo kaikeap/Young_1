@@ -1,7 +1,8 @@
-base = int(input('digite a base\n'))
-expoente = int(input('digite o expoente\n'))
-
-
-for i in range(1,expoente):
-    base *= base
-    print(base, end= ' ')
+while True:
+    b = int(input('digite a base: '))
+    e = int(input('digite o expoente: '))
+    r = b**e
+    print(r)
+    sair = input('deseja sair? ')
+    if sair.lower() == 'sair':
+        break
