@@ -1,18 +1,20 @@
 
 class carro():
-    def __init__ (self):
-        self.velocidade = int(input("O carro esta a: \n"))
+    def __init__ (self, velocidade1):
+        self.velocidade = velocidade1
         self.marca = input("Qual a marca do carro: \n")
 
-    def acelerar(self):
-        self.valor = self.velocidade + 10
-        return f"o carro eta a km{self.valor}/h"
+    def acelerar(self, valor):
+        self.velocidade += valor
+        print( f"o carro esta a km{self.velocidade}/h")
     
-    def frear(self):
-        self.valor2 = self.velocidade - 5
-        return f"o carro eta a km{self.valor2}/h"
+    def frear(self,valor):
+        self.velocidade -= valor
+        print( f"o carro esta a km{self.velocidade}/h")
     
-dirigir = carro()
+dirigir = carro(100)
 
-print(dirigir.acelerar(),dirigir.frear())
-
+dirigir.acelerar(30)
+dirigir.acelerar(30)
+dirigir.frear(10)
+dirigir.frear(30)

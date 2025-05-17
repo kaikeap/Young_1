@@ -5,11 +5,8 @@ class pessoa():
     
     def apresentar(self):
         return f"Ola , meu nome é {self.nome}, eu tenho {self.idade} anos"
-    
+
+
 pessoa1 = pessoa()
 
 print(pessoa1.apresentar())
-
-
-
-
