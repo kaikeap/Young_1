@@ -1,0 +1,6 @@
+Cliente: Vou bem 
+ChatBot: Eu também, Você gosta de filme?
+Cliente: Eu gosto muito!
+ChatBot: Qual?
+Cliente: Gosto Demais!
+ChatBot: Legal
