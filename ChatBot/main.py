@@ -1,39 +1,44 @@
-def saudacoes(nome):
+
+def exibeResposta_GUI(texto, resposta, nome):
+    return resposta.replace("Chatbot",nome)
+    
+def saudacao_GUI(nome):
     import random
-    frases = [f'Bom dia! Meu nome é {nome}. Como vai você?', 'Olá', 'Oi, tudo bem?']
-    print(random.choice(frases))
+    frases = ["Bom dia! Meu nome é " + nome + ". Como vai você?", "Olá!", "Oi, tudo bem?"]
+    return frases[random.randint(0,2)]
 
-def recebeTexto():
-    texto = 'Cliente: ' + input('Cliente: ')
-    palavraProibido = {'Bocó'}
-    for palavra in texto.split():
-        if palavra in palavraProibido:
-            print('Não vem não! Me respeita')
-            return recebeTexto()
-    return texto
-
-def BuscarTexto(nome, texto):
-    with open('BaseDeConhecimento.txt', 'a+') as conhecimento:
-        conhecimento.seek(0)
-        linhas = conhecimento.readlines()
+def salva_sugestao(sugestao):
+    with open("BaseDeConhecimento.txt","a+") as conhecimento:
+        conhecimento.write("Chatbot: " + sugestao + "\n")
         
-        if texto.replace('Cliente: ', '') == 'Tchau':
-            print(nome + ': volte sempre!')
-            return 'fim'
-
-        for i in range(len(linhas)):
-            if linhas[i].strip() == texto.strip():
-                if i + 1 < len(linhas) and 'Chat: ' in linhas[i+1]:
-                    return linhas[i+1].strip()
-
-        print('Me desculpe, não sei o que falar')
-        conhecimento.write(texto + '\n')
-        resposta_user = input('O que esperava\n')
-        conhecimento.write('Chat: ' + resposta_user + '\n')
-        return 'Humm. . .'
-
-def exibirResposta(resposta, nome):
-    if resposta == 'fim':
-        return 'fim'
-    print(resposta.replace('ChatBot', nome))
-    return 'continuar'
+def buscaResposta_GUI(texto):
+    with open("BaseDeConhecimento.txt","a+") as conhecimento:
+        conhecimento.seek(0)
+        while True:
+            viu = conhecimento.readline()
+            if viu != "":
+                if jaccard(texto,viu) > 0.3:
+                    proximalinha = conhecimento.readline()
+                    if "Chatbot: " in proximalinha:
+                        return proximalinha
+            else:
+                conhecimento.write('\n' + texto)
+                return "Me desculpe, não sei o que falar"
+            
+def jaccard(textoUsuario, textoBase):
+    textoUsuario = limpa_frase(textoUsuario)
+    textoBase = limpa_frase(textoBase)
+    if len(textoBase)<1: return 0
+    else:
+        palavras_em_comum = 0
+        for palavra in textoUsuario.split():
+            if palavra in textoBase.split():
+                palavras_em_comum += 1
+        return palavras_em_comum/(len(textoBase.split()))
+    
+def limpa_frase(frase):
+    tirar = ["?","!","...",".",",","Cliente: ", "\n"]
+    for t in tirar:
+        frase = frase.replace(t,"")
+    frase = frase.upper()
+    return frase

@@ -1,2 +1,9 @@
 Cliente: ola
 Chat: ola
+
+Cliente: ola
+Chatbot: como esta
+
+Cliente: bem e vc
+
+Cliente: Olá
